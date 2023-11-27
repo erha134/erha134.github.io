@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index Page | /tools/maths/</title>
+        <link rel="shortcut icon" href="../../../resources/svg/calculator.svg">
+    </head>
+
+    <body>
+        <div>
+            <h1>Index Page of /tools/maths/</h1>
+        </div>
+
+        <div>
+            <p><a target="_blank" href="../../../index.html"> [返回 /] </a></p>
+            <p><a target="_blank" href="../index.html"> [返回 上一级] </a></p>
+        </div>
+
+        <div>
+            <div>
+                <script>
+                    // Events
+                    function onClickCalculate() {
+                        var arg1 = document.getElementById("num1").innerText;
+                        var arg2 = document.getElementById("num2").innerText;
+
+                        var exp1 = document.getElementById("expre1").innerText;
+
+                        var res = 0;
+                        var p_res = document.getElementById("result");
+
+                        //if ((!(arg1 instanceof Number)) || (!(arg2 instanceof Number)) || (!(exp1 instanceof String))) {
+                        //    throw new SyntaxError("类型错误!");
+                        //}
+                        
+                        console.log(typeof arg1)
+                        console.log(typeof arg2)
+                        console.log(typeof exp1)
+
+                        switch (exp1) {
+                            case "+":
+                                res=arg1+arg2;
+                                break;
+                            case '-':
+                                res=arg1-arg2;
+                                break;
+                            case '*':
+                                res=arg1*arg2;
+                                break;
+                            case '/':
+                                if (arg2 == 0) {
+                                    p_res.innerHTML = "= null   第二个数值不能为0, 请刷新此页面重试!";
+                                    throw new RangeError("第二个数不能为0!")
+                                } else {
+                                    res=arg1/arg2;
+                                }
+                                break;
+                            case '%':
+                                if (arg2 == 0) {
+                                    p_res.innerHTML = "= null   第二个数值不能为0, 请刷新此页面重试!";
+                                    throw new RangeError("第二个数不能为0!")
+                                } else {
+                                    res=arg1%arg2;
+                                }
+                                break;
+                            case '^':
+                            case '**':
+                                res=arg1;
+                                for(var i=1;i<=arg2;i++) {
+                                    res*=arg1;
+                                }
+                            case '//': break; // 开方
+                            case '%%': break; // logy(x)
+                            default:
+                                p_res.innerHTML = "= null   运算符号不支持, 请刷新此页面重试!";
+                                throw new ReferenceError();
+                                break;
+                        }
+                        p_res.innerHTML = "= " + new String(res);
+                    }                    
+                </script>
+                <noscript>对不起, 您的浏览器或许并不支持 JavaScript, 请更换浏览器或更新浏览器! </noscript>
+            </div>
+
+            <label for="name">输入表达式:</label>
+
+            <p></p>
+            
+            <input type="number" id="num1" name="number1" required minlength="1" size="5" />
+            <input type="text" id="expre1" name="expression1" required minlength="1" size="3" />
+            <input type="number" id="num2" name="number2" required minlength="1" size="5" />
+            
+            <p5 id = "result">=</p5>
+            
+            <p></p>
+            
+            <button name="calculate-button" onclick="onClickCalculate()" >计算</button>
+        </div>
+
+        <p></p>
+
+        <div>
+            <h2>说明 - 简易计算器</h2>
+            <p>使用 JavaScript 实现功能, 使用 HTML 实现界面</p>
+        </div>
+
+        <footer>
+            <h6></h6>
+            
+            <p5>Pages by Mr_limr267 | Powered by Github</p5>
+
+            <p></p>
+
+            <p5><a target="_blank" href="https://github.com/erha134/erha134.github.io"> View Source On Github </a></p5>
+        </footer>
+    </body>
+</html>
